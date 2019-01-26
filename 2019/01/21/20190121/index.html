@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Youtube用chrome拡張作ってハマったとこ | Shacchin&#39;s Log</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前置き iframe 内 document 使いたい問題 \$(要素).on(‘load’, ()=&amp;gt;{})でも要素が取れない問題 遷移時に Content Scripts が読み込まれない問題 まとめ 参考 URL   前置き最近 Vtuber にドはまりしており、その影響で Youtube 用 chrome 拡張を自作しました。  youtube_chat_pinner ダウンロー">
+<meta name="keywords" content="jQuery,chrome_extention,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Youtube用chrome拡張作ってハマったとこ">
+<meta property="og:url" content="https://shacchin.github.io/shacchinlog/2019/01/21/20190121/index.html">
+<meta property="og:site_name" content="Shacchin&#39;s Log">
+<meta property="og:description" content="前置き iframe 内 document 使いたい問題 \$(要素).on(‘load’, ()=&amp;gt;{})でも要素が取れない問題 遷移時に Content Scripts が読み込まれない問題 まとめ 参考 URL   前置き最近 Vtuber にドはまりしており、その影響で Youtube 用 chrome 拡張を自作しました。  youtube_chat_pinner ダウンロー">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-21T15:02:37.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Youtube用chrome拡張作ってハマったとこ">
+<meta name="twitter:description" content="前置き iframe 内 document 使いたい問題 \$(要素).on(‘load’, ()=&amp;gt;{})でも要素が取れない問題 遷移時に Content Scripts が読み込まれない問題 まとめ 参考 URL   前置き最近 Vtuber にドはまりしており、その影響で Youtube 用 chrome 拡張を自作しました。  youtube_chat_pinner ダウンロー">
+  
+    <link rel="alternate" href="/shacchinlog/atom.xml" title="Shacchin&#39;s Log" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/shacchinlog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/shacchinlog/" id="logo">Shacchin&#39;s Log</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/shacchinlog/">Home</a>
+        
+          <a class="main-nav-link" href="/shacchinlog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/shacchinlog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shacchin.github.io/shacchinlog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20190121" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/shacchinlog/2019/01/21/20190121/" class="article-date">
+  <time datetime="2019-01-21T13:52:25.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Youtube用chrome拡張作ってハマったとこ
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<ul>
+<li><a href="#%E5%89%8D%E7%BD%AE%E3%81%8D">前置き</a></li>
+<li><a href="#iframe-%E5%86%85-document-%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84%E5%95%8F%E9%A1%8C">iframe 内 document 使いたい問題</a></li>
+<li><a href="#%5C%E8%A6%81%E7%B4%A0onload-%E3%81%A7%E3%82%82%E8%A6%81%E7%B4%A0%E3%81%8C%E5%8F%96%E3%82%8C%E3%81%AA%E3%81%84%E5%95%8F%E9%A1%8C">\$(要素).on(‘load’, ()=&gt;{})でも要素が取れない問題</a></li>
+<li><a href="#%E9%81%B7%E7%A7%BB%E6%99%82%E3%81%AB-Content-Scripts-%E3%81%8C%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%AA%E3%81%84%E5%95%8F%E9%A1%8C">遷移時に Content Scripts が読み込まれない問題</a></li>
+<li><a href="#%E3%81%BE%E3%81%A8%E3%82%81">まとめ</a></li>
+<li><a href="#%E5%8F%82%E8%80%83-URL">参考 URL</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2 id="前置き"><a href="#前置き" class="headerlink" title="前置き"></a>前置き</h2><p>最近 Vtuber にドはまりしており、その影響で Youtube 用 chrome 拡張を自作しました。</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/youtubechatpinner/ckgpjgmdfgheojokphgdiohinmeciakf" target="_blank" rel="noopener">youtube_chat_pinner ダウンロード</a><ul>
+<li><a href="https://github.com/shacchin/youtube_chat_pinner" target="_blank" rel="noopener">ソース(github)</a></li>
+</ul>
+</li>
+</ul>
+<p>Vtuber あんまり見ない人向けにも分かるように言うと、配信している Vtuber の知り合いがチャットを残した際にそれを画面に残してくれる拡張です。<br>ちょこちょこ同じ事務所の Vtuber が配信に来たりするんですが、作業しながら動画を流したりしてると</p>
+<p>〇〇が来た！<br>〇〇もよう見とる<br>〇〇おるやんけ！</p>
+<p>みたいなチャットに流されちゃって、そのチャットが見れなくて悔しい思いすることがあるんですよね……<br>配信してる Vtuber 自身もそのチャットに反応したりするので、見逃さなくなるのは我ながら本当に助かるツールです。</p>
+<p>以下本編</p>
+<h2 id="iframe-内-document-使いたい問題"><a href="#iframe-内-document-使いたい問題" class="headerlink" title="iframe 内 document 使いたい問題"></a>iframe 内 document 使いたい問題</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> chatFrame = <span class="built_in">document</span>.getElementById(<span class="string">'chatframe'</span>);</span><br><span class="line"><span class="keyword">const</span> chatFrameDocument = chatFrame.contentWindow.document; <span class="comment">// iframe内文書の document</span></span><br></pre></td></tr></table></figure>
+<p>Youtube のチャット欄は iframe のため document からはアクセス不能。<br>普通に getElementById で取得してから contentWindow.document で取得できます。</p>
+<p>初歩的な話ですが getElemetById と jQuery の\$(‘chatframe’)は取得するオブジェクトが異なるので注意</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// これは動かない！</span></span><br><span class="line"><span class="keyword">const</span> chatFrame = $(<span class="string">'#chatframe'</span>);</span><br><span class="line"><span class="keyword">const</span> chatFrameDocument = chatFrame.contentWindow.document; <span class="comment">// iframe内文書の document</span></span><br></pre></td></tr></table></figure>
+<h2 id="要素-on-‘load’-gt-でも要素が取れない問題"><a href="#要素-on-‘load’-gt-でも要素が取れない問題" class="headerlink" title="$(要素).on(‘load’, ()=&gt;{})でも要素が取れない問題"></a>$(要素).on(‘load’, ()=&gt;{})でも要素が取れない問題</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// インターバルIDの取得</span></span><br><span class="line"><span class="keyword">const</span> setIntervalId = setInterval(startObserve, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startObserve</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> ($(<span class="string">'#chatframe'</span>).length) &#123;</span><br><span class="line">    clearInterval(setIntervalId); <span class="comment">// setInterval解除</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// #chatframeを取得後に行いたい処理を記述</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Youtube チャット欄の iframe は遅延ロードされてるようで、iframe 自体の id を指定しても要素が取れませんでした。<br>jQuery の onload を使ってみても取得できなかったため、上記の実装で対応。</p>
+<p>上記の実装では setInterval によって 1 秒ごとに startObserve 関数が呼ばれ、<br>#chatframe が見つかった時点で setInterval を停止させています。</p>
+<h2 id="遷移時に-Content-Scripts-が読み込まれない問題"><a href="#遷移時に-Content-Scripts-が読み込まれない問題" class="headerlink" title="遷移時に Content Scripts が読み込まれない問題"></a>遷移時に Content Scripts が読み込まれない問題</h2><p>Youtube 拡張最後の罠。<br>動画再生ページで Content Scripts が動くように manifest.json を記述したのに、<br>画面更新しないと Content Scripts が読まれない場合があります。<br>理由は画面遷移時に画面更新が行われていないためでした。</p>
+<p>その場合は manifest.json に以下の記述を追加。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"permissions":[</span><br><span class="line">  "https://www.youtube.com/watch?*", "tabs", "webNavigation"</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>その上で background.js に以下を記述</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chrome.webNavigation.onHistoryStateUpdated.addListener(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  chrome.tabs.executeScript(<span class="literal">null</span>, &#123; <span class="attr">file</span>: <span class="string">'scripts/contentscript.js'</span> &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>これで画面遷移時に更新が行われなくても HistoryAPI を見て file に指定した js を呼んでくれるみたいです。<br>正直ここの実装はあまりちゃんと調べてないので詳しくは分かりませんが……</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>DOM 拾って固定するだけなら簡単やろ！と思って作り始めた chrome 拡張でしたが、思ったよりハマりポイントが多かったです。<br>フロント詳しい人にとっては初歩的なことが多いかもしれませんが、ちょっとかじったレベルだと割とハマりやすい箇所かと思います。</p>
+<p>みんなも chrome 拡張使って快適に Vtuber の配信見よう！以上！</p>
+<h2 id="参考-URL"><a href="#参考-URL" class="headerlink" title="参考 URL"></a>参考 URL</h2><ul>
+<li><a href="https://qiita.com/Rasukarusan/items/754de5d8943eea8cc4ce" target="_blank" rel="noopener">https://qiita.com/Rasukarusan/items/754de5d8943eea8cc4ce</a></li>
+<li><a href="https://sota1235.hatenablog.com/entry/2016/12/01/150209" target="_blank" rel="noopener">https://sota1235.hatenablog.com/entry/2016/12/01/150209</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://shacchin.github.io/shacchinlog/2019/01/21/20190121/" data-id="cjrd43pic0003csvnh9aooxnk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/chrome-extention/">chrome_extention</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/jQuery/">jQuery</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/shacchinlog/2019/01/24/20190124/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Node学園祭 1日目 参加メモ
+        
+      </div>
+    </a>
+  
+  
+    <a href="/shacchinlog/2019/01/09/20190109/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ブログ解説してみました</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/chrome-extention/">chrome_extention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/etc/">etc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/event-report/">event_report</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/nodejs/">nodejs</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/shacchinlog/2019/01/24/20190124/">Node学園祭 1日目 参加メモ</a>
+          </li>
+        
+          <li>
+            <a href="/shacchinlog/2019/01/21/20190121/">Youtube用chrome拡張作ってハマったとこ</a>
+          </li>
+        
+          <li>
+            <a href="/shacchinlog/2019/01/09/20190109/">ブログ解説してみました</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 shacchin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/shacchinlog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/shacchinlog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/shacchinlog/fancybox/jquery.fancybox.css">
+  <script src="/shacchinlog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shacchinlog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
