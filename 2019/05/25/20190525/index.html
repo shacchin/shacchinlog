@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JJUG CCC 2019 Spring 参加メモ | Shacchin&#39;s Log</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="5/18(土)に開催されたJJUG CCC 2019 Springに参加してきました。その時のメモを復習がてらまとめてます。 資料まとめサイト有志の方がセッション資料をまとめてくださっています。https://sun0range.com/event-report/jjug-ccc-2019-spring-time-table 10:00~ 初めてのgRPC 資料：https://speakerde">
+<meta name="keywords" content="event_report,Java,Microservices architecture">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JJUG CCC 2019 Spring 参加メモ">
+<meta property="og:url" content="https://shacchin.github.io/shacchinlog/2019/05/25/20190525/index.html">
+<meta property="og:site_name" content="Shacchin&#39;s Log">
+<meta property="og:description" content="5/18(土)に開催されたJJUG CCC 2019 Springに参加してきました。その時のメモを復習がてらまとめてます。 資料まとめサイト有志の方がセッション資料をまとめてくださっています。https://sun0range.com/event-report/jjug-ccc-2019-spring-time-table 10:00~ 初めてのgRPC 資料：https://speakerde">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-25T03:23:13.953Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JJUG CCC 2019 Spring 参加メモ">
+<meta name="twitter:description" content="5/18(土)に開催されたJJUG CCC 2019 Springに参加してきました。その時のメモを復習がてらまとめてます。 資料まとめサイト有志の方がセッション資料をまとめてくださっています。https://sun0range.com/event-report/jjug-ccc-2019-spring-time-table 10:00~ 初めてのgRPC 資料：https://speakerde">
+  
+    <link rel="alternate" href="/shacchinlog/atom.xml" title="Shacchin&#39;s Log" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/shacchinlog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/shacchinlog/" id="logo">Shacchin&#39;s Log</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/shacchinlog/">Home</a>
+        
+          <a class="main-nav-link" href="/shacchinlog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/shacchinlog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shacchin.github.io/shacchinlog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20190525" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/shacchinlog/2019/05/25/20190525/" class="article-date">
+  <time datetime="2019-05-25T01:03:10.000Z" itemprop="datePublished">2019-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JJUG CCC 2019 Spring 参加メモ
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>5/18(土)に開催された<a href="http://www.java-users.jp/ccc2019spring/#/" target="_blank" rel="noopener">JJUG CCC 2019 Spring</a>に参加してきました。<br>その時のメモを復習がてらまとめてます。</p>
+<h2 id="資料まとめサイト"><a href="#資料まとめサイト" class="headerlink" title="資料まとめサイト"></a>資料まとめサイト</h2><p>有志の方がセッション資料をまとめてくださっています。<br><a href="https://sun0range.com/event-report/jjug-ccc-2019-spring-time-table" target="_blank" rel="noopener">https://sun0range.com/event-report/jjug-ccc-2019-spring-time-table</a></p>
+<h2 id="10-00-初めてのgRPC"><a href="#10-00-初めてのgRPC" class="headerlink" title="10:00~ 初めてのgRPC"></a>10:00~ 初めてのgRPC</h2><ul>
+<li><p>資料：<a href="https://speakerdeck.com/line_developers/starting-grpc" target="_blank" rel="noopener">https://speakerdeck.com/line_developers/starting-grpc</a></p>
+<ul>
+<li>発表資料にサンプルコードがちょこちょこ書いてたので資料の充実さがすごい</li>
+</ul>
+</li>
+<li><p>Swaggerからソースを自動生成できるけどなんだかんだ手を入れる必要がある</p>
+<ul>
+<li>仕様に変更会った時再生成したらまた編集しないとでしんどい。。。</li>
+</ul>
+</li>
+<li>protoファイルは基本的にいじらないから楽？</li>
+<li>messageとかserviceとかprotoファイルの定義が必要だけど書き方がJavaのクラスとかIFっぽい</li>
+<li>gradleでプラグイン入れれば使える<ul>
+<li>オプションで細かいこと設定できるけど割と読み解くのが大変だったらしい</li>
+</ul>
+</li>
+<li>Stubは3種類あるけど全部使おうとすると大変だから基本はBrockingStubを使えばいける</li>
+<li>引数、戻り値にstreamをつけることで複数のデータ送受信ができる！<ul>
+<li>streamつけるとちょっとコードがめんどくさくなるらしい。。</li>
+</ul>
+</li>
+<li>1:1、1:複数までは割と実装しやすいけど、クライアントから複数渡す形式は実装がややこしい<ul>
+<li>そもそもクライアントから複数通信ってあんまり使わない。。。</li>
+</ul>
+</li>
+<li>stream処理を書くための拡張みたいのは色々でてる</li>
+<li>ブラウザからはREST、内部だけgRPCで通信が良さげ？</li>
+<li>Spring bootとgRPCを合わせて使うライブラリが2つほどあり、実際に使うならその辺を使うのが現実的っぽい</li>
+<li>リバプロ型、クライアントサイド型とかもあるけど、サービスメッシュ型が最近は流行りっぽい</li>
+<li>割といろんな仕組み使わないといけないから、マイクロサービスとの相性はよさげではあるけど、実装時点ではJava Servletレベルのエコシステムしかないから結構しんどいかも。。</li>
+</ul>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>マイクロサービスを実際に作ってRESTで苦労した経験がそもそもないのでありがたみについてはあまりイメージできなかったです……<br>ただ、マイクロサービスの内部もRESTでカッチリやろうとすると消耗するみたいな話はよく聞くので、手段の1つとしては覚えておきたいところ。</p>
+<h2 id="11-00-大企業運営の法人向けサービスにおけるOpenJDK移行事例"><a href="#11-00-大企業運営の法人向けサービスにおけるOpenJDK移行事例" class="headerlink" title="11:00~ 大企業運営の法人向けサービスにおけるOpenJDK移行事例"></a>11:00~ 大企業運営の法人向けサービスにおけるOpenJDK移行事例</h2><ul>
+<li><p>資料：<a href="https://slides.com/hiroyuki_onaka/jjug-ccc-2019-spring/#/" target="_blank" rel="noopener">https://slides.com/hiroyuki_onaka/jjug-ccc-2019-spring/#/</a></p>
+</li>
+<li><p>SIerの立場での発表！</p>
+</li>
+<li>単純な話JAVA_HOMEとかをきりかえる”だけ”</li>
+<li>RHEL系の話</li>
+<li>Apache FelixがOpenJDK11.0.1⇨11.0.2でバグ<ul>
+<li>リリースノートが提供されるようになったのは11.0.3からなので見れない。。。</li>
+<li>コミットログとかを追った<ul>
+<li>今後はトラブルが発生した時にOSS的に問題を切り分けてく必要がある！<ul>
+<li>Issueとかコミットログとか</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>芋づる式に地獄のバージョンアップ<ul>
+<li>OpenJDK以降の時にDBバージョンアップする必要が出てくる。。。</li>
+<li>Tomcatのserver.xmlとかも。。。</li>
+</ul>
+</li>
+<li>OS側がJDKを動かすための依存がOracleJDKとOpenJDKだと違う(OpenJDKのが多い)</li>
+<li>通信相手のTLSアルゴリズムが古すぎると使えなくなる。。。</li>
+<li>インフラ周りを放置しすぎてると地獄<ul>
+<li>JDK6&amp;Struts&amp;古いWebLogicとかはやばかったらしい</li>
+<li>継続的にインフラをメンテできてればまだ対応しやすい<ul>
+<li>SIerにとって継続的にインフラをアプデできる体制に移行できるのはここが最後ですよ！！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="感想-1"><a href="#感想-1" class="headerlink" title="感想"></a>感想</h3><p>芋づる式のアップデートとか、まったく他人事じゃないよなぁって話でした……<br>実際今私がいる案件もまだ話は出てないものの、Tomcatバージョンが古かったりStrutsを使っていたり、継続的なメンテができているとはお世辞にも言えない状態なので地獄を見そうですね。</p>
+<h2 id="11-25-開発リーダー1年目。メンバーのスキルアップのためにやっていること。"><a href="#11-25-開発リーダー1年目。メンバーのスキルアップのためにやっていること。" class="headerlink" title="11:25~ 開発リーダー1年目。メンバーのスキルアップのためにやっていること。"></a>11:25~ 開発リーダー1年目。メンバーのスキルアップのためにやっていること。</h2><ul>
+<li><p>資料：<a href="https://docs.google.com/presentation/d/1Xx5UPJkmy2dgzRloe8zaGGpEPWk1rhLiAMypK4TKRz8/edit" target="_blank" rel="noopener">https://docs.google.com/presentation/d/1Xx5UPJkmy2dgzRloe8zaGGpEPWk1rhLiAMypK4TKRz8/edit</a></p>
+</li>
+<li><p>正社員2名でパートナー4人でうちでもありそうな構成</p>
+</li>
+<li>結局正社員だろうがパートナーだろうがキャリアとか環境に合ってないと思われるとみんなやめてく</li>
+<li>輪読会、ランチ、夕会や雑談</li>
+<li>輪読会を実際どのようにやってるか資料に乗ってる<ul>
+<li>うちでも割と有効そう</li>
+<li>こういう本読んどいて〜とかは結局みんな読まない、とか読んでも内容はイマイチ。。みたいなパターンが多い</li>
+<li>リーダブルコードとかを使うことで良いコードを意識するメンバーが増えた</li>
+</ul>
+</li>
+<li>ランチを断る人もいるけど、断れる環境っていいよね</li>
+<li>マネージャとしてのキャリアってエンジニアとしてのキャリア+α</li>
+<li>自分がやったほうが早いって考えはやめとけ<ul>
+<li>メンバがつまづくとこを直してくだけで1人がやるより断然速度は早くなる</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想-2"><a href="#感想-2" class="headerlink" title="感想"></a>感想</h2><p>これまた全く他人事じゃない話。<br>私自身、入社してしばらくは本も全く読まなかったし、先輩からこれ読んだ方がいいよ！と言われても結局読まないことが多かったのでこの輪読会って方法は割と良さそうだと思いました。<br>雑談は本当大事！雑談がしやすい環境の案件、雑談がしづらい環境の案件のどちらも環境も経験しましたが、<br>雑談しやすい環境のが圧倒的に仕事のコミュニケーションも取りやすかったです。<br>現在の案件でもメンバーとして意識してることの1つですね～。</p>
+<h2 id="13-30-先行開発！Javaでクリーンアーキテクチャ-–-ゼロから始める新規開発"><a href="#13-30-先行開発！Javaでクリーンアーキテクチャ-–-ゼロから始める新規開発" class="headerlink" title="13:30~ 先行開発！Javaでクリーンアーキテクチャ – ゼロから始める新規開発"></a>13:30~ 先行開発！Javaでクリーンアーキテクチャ – ゼロから始める新規開発</h2><ul>
+<li><p>資料：<a href="https://nrslib.com/clean-architecture-with-java/" target="_blank" rel="noopener">https://nrslib.com/clean-architecture-with-java/</a></p>
+<ul>
+<li>記事としてもまとめてくださってる！</li>
+</ul>
+</li>
+<li><p>クリーンアーキテクチャのよくある図の前にヘキサゴナルアーキテクチャ（ポートアンドアダプター）</p>
+<ul>
+<li>ゲーム機本体とディスプレイなどの周辺機器の関係みたいな</li>
+<li>アプリケーションだと入出力デバイスもデータストアのことも知らない</li>
+</ul>
+</li>
+<li>クリーンアーキテクチャはヘキサゴナルアーキテクチャの実装方法を説明するアイデア</li>
+<li>ドメインとしてのエンティティとデータモデルは違うし画面出力用のviewmodelも違う</li>
+</ul>
+<h2 id="感想-3"><a href="#感想-3" class="headerlink" title="感想"></a>感想</h2><p>以前自分で調べた際にあまりイメージできなかったクリーンアーキテクチャが、なんとなくイメージできるまでになったわかりやすい発表でした。<br>資料だけでもわかりやすい上、復習用に記事までまとめてくださっているため興味がある方はぜひ資料URLに飛んで見てみてください。<br>アーキテクチャそのものは非常に有用なものだと感じましたが、インターフェースをがっつり切る分実装のコストは大きそうで、「本当に必要か？」はよく考える必要があるように感じました。</p>
+<h2 id="14-30-テストエンジニアが教える-JUnitを書き始める前に考えるべきテスト"><a href="#14-30-テストエンジニアが教える-JUnitを書き始める前に考えるべきテスト" class="headerlink" title="14:30~ テストエンジニアが教える JUnitを書き始める前に考えるべきテスト"></a>14:30~ テストエンジニアが教える JUnitを書き始める前に考えるべきテスト</h2><ul>
+<li><p>資料：<a href="https://speakerdeck.com/nihonbuson/jjug-ccc-2019-spring" target="_blank" rel="noopener">https://speakerdeck.com/nihonbuson/jjug-ccc-2019-spring</a></p>
+</li>
+<li><p>テストは品質レベルが”十分”であることしか示せない(※完璧じゃない)</p>
+</li>
+<li>実装の作り込みの防止もテストの大切な目的</li>
+<li>テストの内容についても議論しましょう！<ul>
+<li>ペアワークを実際にやったけど、テストの仕様を他の人と話すと、自分が気づいてないテストがでてきた</li>
+</ul>
+</li>
+<li>プログラム書く前から”何をテストする？？”を話すだけでも効果がある</li>
+<li>テストケースを考える時は理由を必ず考える！<ul>
+<li>選択肢5つのうち2つをテストします⇨どうして？⇨境界値</li>
+<li>理由がそのまま具体的なテストケース名になる</li>
+</ul>
+</li>
+<li>開発者がやるのはchecking、QAがやるのはTesting</li>
+<li>自動テストでできるのはcheckingだけ</li>
+<li>発表資料内にテストに関するおすすめ書籍あり</li>
+<li>JaSSTってイベントはおすすめとのこと</li>
+</ul>
+<h3 id="感想-4"><a href="#感想-4" class="headerlink" title="感想"></a>感想</h3><p>思っていたより基本的な内容のお話でした。<br>ただ、わかってはいるけどやれてないって案件は実際多そうにも感じてます。<br>実装前に”何をテストする？”をしっかり考える部分については、工数に関係なく取り組める話だと思うので日々実践していきたいですね。</p>
+<h2 id="15-45-1400万ユーザーのWebサービスを15年運用して考える、Javaである理由"><a href="#15-45-1400万ユーザーのWebサービスを15年運用して考える、Javaである理由" class="headerlink" title="15:45~ 1400万ユーザーのWebサービスを15年運用して考える、Javaである理由"></a>15:45~ 1400万ユーザーのWebサービスを15年運用して考える、Javaである理由</h2><ul>
+<li><p>資料：<a href="https://speakerdeck.com/masao0127s/1400mo-yuzafalsewebsabisuwo-15nian-yun-yong-sitekao-eru-javadearuli-you" target="_blank" rel="noopener">https://speakerdeck.com/masao0127s/1400mo-yuzafalsewebsabisuwo-15nian-yun-yong-sitekao-eru-javadearuli-you</a></p>
+</li>
+<li><p>安定、社内の知見が理由でJava</p>
+<ul>
+<li>言語仕様以外のところが理由でチョイス</li>
+</ul>
+</li>
+<li>使ってる人が多いことによる情報収集のしやすさ<ul>
+<li>人的リソースも集めやすい</li>
+</ul>
+</li>
+<li>静的型付け&amp;コンパイラが強力</li>
+<li>ピクトリンクはAdoptOpenJDK8に移行<ul>
+<li>11にあげるのはキツイしOracleは高い</li>
+<li>OracleJDK8⇨AdoptOpenJDK8への移行はそんなに困らなかった</li>
+</ul>
+</li>
+</ul>
+<h3 id="感想-5"><a href="#感想-5" class="headerlink" title="感想"></a>感想</h3><p>いくつか理由は上げていらっしゃったものの、社内のナレッジ蓄積と人の集めやすさが結局大きい印象を受けました。<br>ここしばらくJavaScriptを触ってて型の厳しさに対するありがみは感じるようになりましたが、それもTypeScriptを使えばほぼ解決するんですよね……<br>言語的な部分で言うならJavaを使う理由ってそこまでないのかなぁと感じました。</p>
+<h2 id="16-45-ストラングラーパターンによるマイクロサービスマイグレーションの勘所"><a href="#16-45-ストラングラーパターンによるマイクロサービスマイグレーションの勘所" class="headerlink" title="16:45~ ストラングラーパターンによるマイクロサービスマイグレーションの勘所"></a>16:45~ ストラングラーパターンによるマイクロサービスマイグレーションの勘所</h2><ul>
+<li><p>資料：<a href="https://speakerdeck.com/kawakamitor/jjug-ccc-2019-spring" target="_blank" rel="noopener">https://speakerdeck.com/kawakamitor/jjug-ccc-2019-spring</a></p>
+</li>
+<li><p>Oracleがやっぱりボトルネック</p>
+</li>
+<li>k8sのスタンダードな構成<ul>
+<li>それぞれはSpring Bootで実装</li>
+</ul>
+</li>
+<li><a href="https://docs.microsoft.com/ja-jp/azure/architecture/patterns/strangler" target="_blank" rel="noopener">Strangler Pattern</a></li>
+<li>Azureのサービスを一旦経由させて従来のDB⇨サービスからAzure上のDBを見るように<ul>
+<li>joinjoin&amp;joinが厄介</li>
+<li>効果の高いところから始め、場合によっては大胆に移行するしかない</li>
+</ul>
+</li>
+<li>SwaggerでSpringのControllerを自動生成<ul>
+<li>クライアントも自動生成できるからうまく使えばSwaggerは便利！</li>
+</ul>
+</li>
+<li>k8sを使った開発ではこれまで以上にログ収集が必須<ul>
+<li>Papertrailを使用しているらしい</li>
+</ul>
+</li>
+<li>spring-cloud-starter-sleuthはSpringBootならとりあえず入れとけ！<ul>
+<li>サービスをまたいだリクエストのログを識別できるようになる</li>
+</ul>
+</li>
+<li>k8s周りは非互換なバージョンアップがあるので注意！<ul>
+<li>基本的には新クラスタ立てて並行稼働しつつ切り替えていこう</li>
+</ul>
+</li>
+</ul>
+<h3 id="感想-6"><a href="#感想-6" class="headerlink" title="感想"></a>感想</h3><p>今いる案件でマイクロサービスをやるならまさにこのパターンになるんだろうなぁって感じのセッションでした。<br>joinしまくってる箇所の分割、移行は本当にネックですね……</p>
+<h2 id="17-45-マイクロサービス：４つの分割アプローチの比較"><a href="#17-45-マイクロサービス：４つの分割アプローチの比較" class="headerlink" title="17:45~ マイクロサービス：４つの分割アプローチの比較"></a>17:45~ マイクロサービス：４つの分割アプローチの比較</h2><ul>
+<li><p>資料：<a href="https://www.slideshare.net/masuda220/ss-146325870" target="_blank" rel="noopener">https://www.slideshare.net/masuda220/ss-146325870</a></p>
+</li>
+<li><p>クラウド、コンテナは必要なものだけど、結局重要なのは設計スキル</p>
+</li>
+<li>前提として、発表者の人は（プロダクトには）枯れた技術しか使いたくない</li>
+<li>まずはモノリスで作ってからマイクロサービスへの検討<ul>
+<li>多分うちもこんな流れになるよね</li>
+</ul>
+</li>
+<li>そもそも関心の分離とか疎結合とかはマイクロサービスうんぬん関係なく必要な内容</li>
+<li>実際問題マイクロサービスでどこまで小さくできるかはスキル次第<ul>
+<li>最初はある程度まで分散して、経験、実績が出れば次の段階でさらに細かく分けるという方法</li>
+</ul>
+</li>
+<li>マイクロサービス化した時にモノリスではありえなかった問題が出てくる<ul>
+<li>経験をつめば問題なくなってくるが、ここを考えておかないと辛い目にあうだけ。。。</li>
+</ul>
+</li>
+<li><a href="https://www.slideshare.net/masuda220/ss-146325870" target="_blank" rel="noopener">マイクロサービス間の通信8つの勘違いと真実</a><ul>
+<li>ぶっささる人多い気がするので要チェック！</li>
+</ul>
+</li>
+<li><p>設計時点での論理的な分割はとにかく積極的に！</p>
+<ul>
+<li>設計がよくなればなるほどマイクロサービス化のハードルも下がる</li>
+</ul>
+</li>
+<li><p>ビジネスロジックでの分割の説明中Twitterでコンウェイの法則？が話題に上がってた</p>
+</li>
+<li><p>ユースケース単位での分割</p>
+<ul>
+<li>ユースケースで分割した裏で、ロジックを領域ごとに整理して管理することで、重複やデータ不整合を防ぐ</li>
+</ul>
+</li>
+<li><p>ドメイン駆動的な分割</p>
+<ul>
+<li>そもそもエヴァンス流とバーノン流で違うっぽい？</li>
+<li>わからん！とのこと</li>
+</ul>
+</li>
+<li><p>ドメイン駆動設計の「モデル」はビジネスルール</p>
+</li>
+<li><p>時間の都合上トランザクションについては資料を参照してね</p>
+</li>
+</ul>
+<h3 id="感想-7"><a href="#感想-7" class="headerlink" title="感想"></a>感想</h3><p>マイクロサービス化を行うときに頭に入れておかねば……！みたいな内容がつまりにつまった濃いセッションでした。<br>個人的に以下2点は忘れないようにしたいと感じました。</p>
+<ul>
+<li>論理的な分割は積極的に、物理的な分割は慎重に<ul>
+<li>論理的な分割のノリで物理的な分割をやってしまい、システムが複雑になって地獄を見る……というのは実際にハマりそうなパターンだったので</li>
+</ul>
+</li>
+<li><a href="https://www.slideshare.net/masuda220/ss-146325870" target="_blank" rel="noopener">マイクロサービス間の通信8つの勘違いと真実</a><ul>
+<li>この勘違いをして地獄を見る想像が一瞬でできたので……</li>
+</ul>
+</li>
+</ul>
+<h2 id="セッションは聞いてないけどtwitterタグ監視で見つけた話題"><a href="#セッションは聞いてないけどtwitterタグ監視で見つけた話題" class="headerlink" title="セッションは聞いてないけどtwitterタグ監視で見つけた話題"></a>セッションは聞いてないけどtwitterタグ監視で見つけた話題</h2><ul>
+<li>Javaアプデについて<ul>
+<li>今後JavaはLTSだけを追おうとすると変更多くてキツいのでちゃんと半年ごとのアプデチェックしましょう</li>
+</ul>
+</li>
+<li>教育系<ul>
+<li>Javaの従来型の新人研修は現場と乖離がある</li>
+<li>検収時点からLint入れて綺麗なコードを意識させる</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://shacchin.github.io/shacchinlog/2019/05/25/20190525/" data-id="cjw2y94tk0005pkvn2dzz26x1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/Microservices-architecture/">Microservices architecture</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/event-report/">event_report</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/shacchinlog/2019/03/07/20190307/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CORS対応のメモ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Microservices-architecture/">Microservices architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/chrome-extention/">chrome_extention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/etc/">etc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/event-report/">event_report</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/jQuery/">jQuery</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/shacchinlog/2019/05/25/20190525/">JJUG CCC 2019 Spring 参加メモ</a>
+          </li>
+        
+          <li>
+            <a href="/shacchinlog/2019/03/07/20190307/">CORS対応のメモ</a>
+          </li>
+        
+          <li>
+            <a href="/shacchinlog/2019/01/24/20190124/">Node学園祭 1日目 参加メモ</a>
+          </li>
+        
+          <li>
+            <a href="/shacchinlog/2019/01/21/20190121/">Youtube用chrome拡張作ってハマったとこ</a>
+          </li>
+        
+          <li>
+            <a href="/shacchinlog/2019/01/09/20190109/">ブログ解説してみました</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 shacchin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/shacchinlog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/shacchinlog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/shacchinlog/fancybox/jquery.fancybox.css">
+  <script src="/shacchinlog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/shacchinlog/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

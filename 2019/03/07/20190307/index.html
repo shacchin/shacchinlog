@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Shacchin&#39;s Log">
 <meta property="og:description" content="NetlifyにデプロイしたアプリからSteamAPI呼んで遊ぼうと思ったら弾かれて悲しい思いしたのでメモ。 仕事で一度引っかかってつらい思いしたのにサックリ対応してなかったから頭に入ってなかったみたいです。ちゃんと理解して対応しましょうね。 CORSとは正式名称は”Cross-Origin Resource Sharing”(オリジン間リソース共有)。 ブラウザはセキュリティ上の理由で、自分自身">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-11T13:25:49.873Z">
+<meta property="og:updated_time" content="2019-04-10T14:37:10.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CORS対応のメモ">
 <meta name="twitter:description" content="NetlifyにデプロイしたアプリからSteamAPI呼んで遊ぼうと思ったら弾かれて悲しい思いしたのでメモ。 仕事で一度引っかかってつらい思いしたのにサックリ対応してなかったから頭に入ってなかったみたいです。ちゃんと理解して対応しましょうね。 CORSとは正式名称は”Cross-Origin Resource Sharing”(オリジン間リソース共有)。 ブラウザはセキュリティ上の理由で、自分自身">
@@ -100,7 +100,7 @@
 <p>サーバーはexpress、クライアントはVue.jsで作成。<br>両方ともローカルで試していますが、サーバーを3000ポート、クライアントを8080ポートで立ち上げているためオリジンは別扱いとなります。</p>
 <h3 id="CORS対応なし"><a href="#CORS対応なし" class="headerlink" title="CORS対応なし"></a>CORS対応なし</h3><p>まずはcors対応なし。</p>
 <h4 id="クライアント"><a href="#クライアント" class="headerlink" title="クライアント"></a>クライアント</h4><p>callボタンを押すとサーバーにGETリクエストを送り、取得したデータをコンソールに表示します。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"callHello"</span>&gt;</span>Call<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">import Axios from "axios";</span></span><br><span class="line"><span class="undefined">export default &#123;</span></span><br><span class="line"><span class="undefined">  name: "CallApi",</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    async callHello() &#123;</span></span><br><span class="line"><span class="undefined">      try &#123;</span></span><br><span class="line"><span class="undefined">        const res = await Axios.get(`http://localhost:3000/api/v1/helloworld`);</span></span><br><span class="line"><span class="undefined">        console.log(res.data);</span></span><br><span class="line"><span class="undefined">      &#125; catch (err) &#123;</span></span><br><span class="line"><span class="undefined">        console.log(err);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"callHello"</span>&gt;</span>Call<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">"axios"</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">"CallApi"</span>,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> callHello() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">const</span> res = <span class="keyword">await</span> Axios.get(<span class="string">`http://localhost:3000/api/v1/helloworld`</span>);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(res.data);</span></span><br><span class="line"><span class="javascript">      &#125; <span class="keyword">catch</span> (err) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(err);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="サーバー"><a href="#サーバー" class="headerlink" title="サーバー"></a>サーバー</h4><p>シンプルにHelloworldの文字列を含むjsonを返すAPIを作成。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line"><span class="comment">// CORS対応してないパターン</span></span><br><span class="line">app.get(<span class="string">'/api/v1/helloworld'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    message: <span class="string">'Hello world!!!!'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3000番ポートで待ち受け</span></span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Node.js is listening to PORT:'</span> + server.address().port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h4 id="実行結果"><a href="#実行結果" class="headerlink" title="実行結果"></a>実行結果</h4><p>予想通り、クロスオリジンのエラーで弾かれます。</p>
@@ -112,12 +112,12 @@
 <h4 id="実行結果-1"><a href="#実行結果-1" class="headerlink" title="実行結果"></a>実行結果</h4><p>これで問題なくjsonを受けとることができました！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;message: &quot;Hello world!!!!&quot;&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>preflightが不要なら割と簡単に実装はできそうです。<br>ただ、対応が必要なのはサーバー側なので、今回最初に試そうとしていたように、Netlifyに配置した静的サイトから直接外部サービスのAPIを呼ぶのは無理そうですね……</p>
-<p>lamdaとかからSteamAPIを呼ぶ処理を作り、その処理を静的サイトから呼び出すとかで実装できるんですかね。<br>試してみないと……</p>
+<p>lambdaとかからSteamAPIを呼ぶ処理を作り、その処理を静的サイトから呼び出すとかで実装できるんですかね。<br>試してみないと……</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://shacchin.github.io/shacchinlog/2019/03/07/20190307/" data-id="cjt4c40ru0003gwvnzg6hjp7f" class="article-share-link">Share</a>
+      <a data-url="https://shacchin.github.io/shacchinlog/2019/03/07/20190307/" data-id="cjw2y94ti0004pkvnaxqgq4z1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shacchinlog/tags/JavaScript/">JavaScript</a></li></ul>
@@ -127,6 +127,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/shacchinlog/2019/05/25/20190525/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JJUG CCC 2019 Spring 参加メモ
+        
+      </div>
+    </a>
   
   
     <a href="/shacchinlog/2019/01/24/20190124/" id="article-nav-older" class="article-nav-link-wrap">
@@ -150,7 +159,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/chrome-extention/">chrome_extention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/etc/">etc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/event-report/">event_report</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/jQuery/">jQuery</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Microservices-architecture/">Microservices architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/chrome-extention/">chrome_extention</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/etc/">etc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/event-report/">event_report</a></li><li class="tag-list-item"><a class="tag-list-link" href="/shacchinlog/tags/jQuery/">jQuery</a></li></ul>
     </div>
   </div>
 
@@ -160,7 +169,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/01/">January 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/shacchinlog/archives/2019/01/">January 2019</a></li></ul>
     </div>
   </div>
 
@@ -171,6 +180,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/shacchinlog/2019/05/25/20190525/">JJUG CCC 2019 Spring 参加メモ</a>
+          </li>
         
           <li>
             <a href="/shacchinlog/2019/03/07/20190307/">CORS対応のメモ</a>
